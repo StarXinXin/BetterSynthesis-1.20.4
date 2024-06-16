@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://xinstudio.top/",
-		"sources": "https://github.com/StarXinXin"
+		"sources": "https://github.com/StarXinXin/BetterSynthesis-1.20.4"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/better-synthesis/icon.png",
@@ -21,10 +21,7 @@
 		"fabric-datagen": [
 			"top.xinstudio.xinxin.BetterSynthesisDataGenerator"
 		],
-		"client": ["top.xinstudio.xinxin.BetterSynthesisClient"],
-		"fabric-datagen": [
-			"top.xinstudio.xinxin.TutorialModDataGenerator"
-		]
+		"client": ["top.xinstudio.xinxin.BetterSynthesisClient"]
 	},
 	"mixins": [
 		"better-synthesis.mixins.json"
