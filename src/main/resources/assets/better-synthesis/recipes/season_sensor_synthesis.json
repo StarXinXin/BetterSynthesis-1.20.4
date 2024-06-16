@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    " B ",
+    "WWW"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:cobblestone_slab"
+    },
+    "B": {
+      "item": "sereneseasons:calendar"
+    }
+  },
+  "result": {
+    "item": "sereneseasons:season_sensor",
+    "count": 1
+  }
+}

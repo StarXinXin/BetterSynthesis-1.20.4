@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BAB",
+    "DCD",
+    "DDD"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:lapis_lazuli"
+    },"C": {
+      "item": "minecraft:book"
+    },"B": {
+      "item": "minecraft:diamond"
+    },"D": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "editenchanting:enchantment_edit_table",
+    "count": 1
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "item.better-synthesis.item_crafting_table": "Better Synthesis Icon",
+  "item.better-synthesis.item_hardboiled_egg": "HardBoiled Eggs",
+  "block.better-synthesis.cooking_pot": "Cooking Stoves",
+  "entity.minecraft.villager.cooking_stoves_master": "Kitchen",
+  "itemgroup.item_name": "BetterSynthesis"
+}
