@@ -3,15 +3,14 @@ plugins {
 	id 'maven-publish'
 }
 
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
 version = project.mod_version
 group = project.maven_group
 
 base {
 	archivesName = project.archives_base_name
-}
-
-tasks.withType(Copy).all {
-	duplicatesStrategy 'exclude'
 }
 
 repositories {
@@ -81,4 +80,35 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+
+task copyDocs(type: Copy) {
+    from 'src/main/doc'
+    into 'build/target/doc'
+}
+
+
+def dataContent = copySpec {
+    from 'src/data'
+    include '*.data'
+}
+
+task initConfig(type: Copy) {
+    from('src/main/config') {
+        include '**/*.properties'
+        include '**/*.xml'
+        filter(ReplaceTokens, tokens: [version: '2.3.1'])
+    }
+    from('src/main/config') {
+        exclude '**/*.properties', '**/*.xml'
+    }
+    from('src/main/languages') {
+        rename 'EN_US_(.*)', '$1'
+    }
+    into 'build/target/config'
+    exclude '**/*.bak'
+
+    includeEmptyDirs = false
+
+    with dataContent
 }
