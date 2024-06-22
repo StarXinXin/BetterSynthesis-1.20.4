@@ -27,8 +27,8 @@
 		"better-synthesis.mixins.json"
 	],
 	"depends": {
-		"fabricloader": "*",
-		"minecraft": "*",
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.4",
 		"java": ">=17",
 		"fabric-api": "*"
 	},
