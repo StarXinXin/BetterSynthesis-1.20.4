@@ -45,8 +45,26 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
+	it.options.release = 21
 }
+
+
+tasks.register('sourcesJar', Jar) {
+	from sourceSets.main.allSource
+	archiveClassifier.set('sources')
+
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+// For the processResources task
+tasks.named('processResources', Copy) {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE // 或者使用 DuplicatesStrategy.WARN 以发出警告而不是失败
+}
+
+
+//tasks.withType(Copy).all {
+//	duplicatesStrategy 'exclude'
+//}
 
 java {
 	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
@@ -80,35 +98,4 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
-}
-
-task copyDocs(type: Copy) {
-    from 'src/main/doc'
-    into 'build/target/doc'
-}
-
-
-def dataContent = copySpec {
-    from 'src/data'
-    include '*.data'
-}
-
-task initConfig(type: Copy) {
-    from('src/main/config') {
-        include '**/*.properties'
-        include '**/*.xml'
-        filter(ReplaceTokens, tokens: [version: '2.3.1'])
-    }
-    from('src/main/config') {
-        exclude '**/*.properties', '**/*.xml'
-    }
-    from('src/main/languages') {
-        rename 'EN_US_(.*)', '$1'
-    }
-    into 'build/target/config'
-    exclude '**/*.bak'
-
-    includeEmptyDirs = false
-
-    with dataContent
 }

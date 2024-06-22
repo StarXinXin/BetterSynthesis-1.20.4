@@ -2,6 +2,7 @@
   "item.better-synthesis.item_crafting_table": "更好的合成图标",
   "item.better-synthesis.item_hardboiled_egg": "熟鸡蛋",
   "block.better-synthesis.cooking_pot": "炉灶",
+  "container.CookingStoves": "炉灶",
   "entity.minecraft.villager.cooking_stoves_master": "厨师",
   "itemgroup.item_name": "更换的合成"
 }

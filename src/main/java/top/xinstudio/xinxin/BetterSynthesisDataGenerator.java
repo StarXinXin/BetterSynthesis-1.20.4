@@ -6,6 +6,8 @@ import top.xinstudio.xinxin.datagen.ModModelsProvider;
 import top.xinstudio.xinxin.datagen.ModPoiTagsProvider;
 
 public class BetterSynthesisDataGenerator implements DataGeneratorEntrypoint {
+
+
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();

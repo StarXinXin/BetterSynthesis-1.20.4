@@ -3,5 +3,6 @@
   "item.better-synthesis.item_hardboiled_egg": "HardBoiled Eggs",
   "block.better-synthesis.cooking_pot": "Cooking Stoves",
   "entity.minecraft.villager.cooking_stoves_master": "Kitchen",
+  "container.CookingStoves": "Cooking Stoves",
   "itemgroup.item_name": "BetterSynthesis"
 }
