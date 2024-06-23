@@ -12,7 +12,7 @@ import top.xinstudio.xinxin.screen.ModScreenHandlers;
 public class BetterSynthesisClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        HandledScreens.register(ModScreenHandlers.POLISHING_MACHINE_SCREEN_HANDLER, CookingPotScreen::new);
 
+        HandledScreens.register(ModScreenHandlers.POLISHING_MACHINE_SCREEN_HANDLER, CookingPotScreen::new);
     }
 }

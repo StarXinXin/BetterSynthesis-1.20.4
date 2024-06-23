@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WLW",
+    "WEW",
+    "W W"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:phantom_membrane"
+    },"E": {
+      "item": "minecraft:ender_eye"
+    },"L": {
+      "item": "minecraft:lead"
+    }
+  },
+  "result": {
+    "item": "minecraft:elytra",
+    "count": 1
+  }
+}

@@ -13,7 +13,7 @@ import top.xinstudio.xinxin.block.ModBlocks;
 public class ModItemGroup {
     public static final ItemGroup SILVER_GROUP = Registry.register(Registries.ITEM_GROUP,
             new Identifier(BetterSynthesis.MOD_ID, "item_name"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.item_name"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.BetterSynthesis"))
                     .icon(() -> new ItemStack(ModItems.ITEM_CraftingTable)).entries((displayContext, entries) -> {
                         entries.add(ModItems.ITEM_HardboiledEggs);
                         entries.add(ModBlocks.ITEM_COOKINGSTOVES);

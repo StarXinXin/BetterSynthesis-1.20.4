@@ -1,8 +1,12 @@
 {
   "item.better-synthesis.item_crafting_table": "Better Synthesis Icon",
   "item.better-synthesis.item_hardboiled_egg": "HardBoiled Eggs",
-  "block.better-synthesis.cooking_pot": "Cooking Stoves",
+  "block.better-synthesis.cooking_pot": "kitchen Pots",
   "entity.minecraft.villager.cooking_stoves_master": "Kitchen",
-  "container.CookingStoves": "Cooking Stoves",
-  "itemgroup.item_name": "BetterSynthesis"
+  "container.CookingStoves": "kitchen Pots",
+  "itemgroup.BetterSynthesis": "BetterSynthesis",
+  "advancements.root.title": "TheChefSRoad",
+  "advancements.egg.title": "Piping hot and delicious",
+  "advancements.root.description": "Get the pot and start your cooking journey!",
+  "advancements.egg.description": "Successfully cooked your first egg!"
 }

@@ -26,9 +26,9 @@ public class CookingPotBlock extends BlockWithEntity  implements BlockEntityProv
         super(Settings.create().mapColor(MapColor.IRON_GRAY).hardness(.5f).resistance(6.f).sounds(BlockSoundGroup.LANTERN));
     }
 
-    public static final MapCodec<FurnaceBlock> CODEC = FurnaceBlock.createCodec(FurnaceBlock::new);
+    public static final MapCodec<CookingPotBlock> CODEC = CookingPotBlock.createCodec(CookingPotBlock::new);
 
-    public MapCodec<FurnaceBlock> getCodec() {
+    public MapCodec<CookingPotBlock> getCodec() {
         return CODEC;
     }
 

@@ -31,22 +31,18 @@ public class CookingPotBlockEntity extends BlockEntity implements ExtendedScreen
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
-    private static final int FUEL_SLOT = 2;
+    private static final int OUTPUT_SLOT = 2;
+    private static final int FUEL_SLOT = 1;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 100;
     private int fuelTime = 0;
-    private int maxFuelTime = 0;
 
     private final List<CookingRecipe> recipes = new ArrayList<>();
 
     public CookingPotBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.COOKING_POT_BLOCK_ENTITY, pos, state);
-        recipes.add(new CookingRecipe(Items.EGG, ModItems.ITEM_HardboiledEggs, 1));
-
-
 
         this.propertyDelegate = new PropertyDelegate() {
             @Override
@@ -55,7 +51,7 @@ public class CookingPotBlockEntity extends BlockEntity implements ExtendedScreen
                     case 0 -> CookingPotBlockEntity.this.progress;
                     case 1 -> CookingPotBlockEntity.this.maxProgress;
                     case 2 -> CookingPotBlockEntity.this.fuelTime;
-                    case 3 -> CookingPotBlockEntity.this.maxFuelTime;
+//                    case 3 -> CookingPotBlockEntity.this.maxFuelTime;
                     default -> 0;
                 };
             }
@@ -66,15 +62,17 @@ public class CookingPotBlockEntity extends BlockEntity implements ExtendedScreen
                     case 0 -> CookingPotBlockEntity.this.progress = value;
                     case 1 -> CookingPotBlockEntity.this.maxProgress = value;
                     case 2 -> CookingPotBlockEntity.this.fuelTime = value;
-                    case 3 -> CookingPotBlockEntity.this.maxFuelTime = value;
+//                    case 3 -> CookingPotBlockEntity.this.maxFuelTime = value;
                 }
             }
 
             @Override
             public int size() {
-                return 4;
+                return 3;
             }
         };
+
+        recipes.add(new CookingRecipe(Items.EGG, ModItems.ITEM_HardboiledEggs, 1));
     }
 
     @Override
@@ -157,7 +155,7 @@ public class CookingPotBlockEntity extends BlockEntity implements ExtendedScreen
                 ItemStack outputStack = new ItemStack(recipe.getOutputItem(), recipe.getOutputAmount());
                 setStack(OUTPUT_SLOT, new ItemStack(outputStack.getItem(), getStack(OUTPUT_SLOT).getCount() + outputStack.getCount()));
                 markDirty();
-                break; // Exit loop after finding and crafting the recipe
+                break;
             }
         }
     }
@@ -166,10 +164,10 @@ public class CookingPotBlockEntity extends BlockEntity implements ExtendedScreen
         ItemStack inputStack = getStack(INPUT_SLOT);
         for (CookingRecipe recipe : recipes) {
             if (recipe.getInputItem() == inputStack.getItem() && canInsertAmountIntoOutputSlot(new ItemStack(recipe.getOutputItem(), recipe.getOutputAmount())) && canInsertItemIntoOutputSlot(recipe.getOutputItem())) {
-                return true; // Found a matching recipe
+                return true;
             }
         }
-        return false; // No matching recipe found
+        return false;
     }
 
     private boolean hasCraftingFinished() {
@@ -206,7 +204,6 @@ public class CookingPotBlockEntity extends BlockEntity implements ExtendedScreen
         if (!fuelStack.isEmpty()) {
             if (isValidFuel(fuelStack)) {
                 fuelTime = 205; // 假设每个有效的燃料项目燃烧 200 个刻度
-                maxFuelTime = fuelTime;
                 fuelStack.decrement(1);
             }
         }

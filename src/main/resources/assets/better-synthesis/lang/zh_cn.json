@@ -1,8 +1,12 @@
 {
   "item.better-synthesis.item_crafting_table": "更好的合成图标",
   "item.better-synthesis.item_hardboiled_egg": "熟鸡蛋",
-  "block.better-synthesis.cooking_pot": "炉灶",
-  "container.CookingStoves": "炉灶",
+  "block.better-synthesis.cooking_pot": "厨锅",
+  "container.CookingStoves": "厨锅",
   "entity.minecraft.villager.cooking_stoves_master": "厨师",
-  "itemgroup.item_name": "更换的合成"
+  "itemgroup.BetterSynthesis": "更换的合成",
+  "advancements.root.title": "大厨之路",
+  "advancements.egg.title": "滚烫美味",
+  "advancements.root.description": "获得锅，开始烹饪之旅！",
+  "advancements.egg.description": "成功煮熟了你的第一个鸡蛋！"
 }

@@ -30,8 +30,8 @@ public class CookingPotScreenHandler extends ScreenHandler {
         this.blockEntity = (CookingPotBlockEntity) blockEntity;
 
         this.addSlot(new Slot(inventory, 0, 39, 12)); // 输入槽
-        this.addSlot(new Slot(inventory, 1, 123, 34)); // 输出槽
-        this.addSlot(new Slot(inventory, 2, 39, 53)); // 燃料槽
+        this.addSlot(new Slot(inventory, 1, 39, 53)); // 燃料槽
+        this.addSlot(new Slot(inventory, 2, 123, 34)); // 输出槽
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

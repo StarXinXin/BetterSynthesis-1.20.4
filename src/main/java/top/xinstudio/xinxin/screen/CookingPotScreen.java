@@ -12,8 +12,9 @@ import top.xinstudio.xinxin.BetterSynthesis;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
-@Environment(value=EnvType.CLIENT)
+@Environment(value = EnvType.CLIENT)
 public class CookingPotScreen extends HandledScreen<CookingPotScreenHandler> {
+
     private static final Identifier TEXTURE = new Identifier(BetterSynthesis.MOD_ID, "textures/gui/cooking_pot_gui.png");
 
     public CookingPotScreen(CookingPotScreenHandler handler, PlayerInventory inventory, Text title) {
@@ -26,7 +27,9 @@ public class CookingPotScreen extends HandledScreen<CookingPotScreenHandler> {
         titleY = 10;
         titleX = 80;
         playerInventoryTitleY = 1000;
+
     }
+
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
@@ -48,10 +51,4 @@ public class CookingPotScreen extends HandledScreen<CookingPotScreenHandler> {
         }
     }
 
-    @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
-        super.render(context, mouseX, mouseY, delta);
-        drawMouseoverTooltip(context, mouseX, mouseY);
-    }
 }
