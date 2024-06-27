@@ -1,4 +1,4 @@
-![BetterSynthesis-1.20.4](https://oiapi.net/API/GithubPreview/?clear=clear&url=https://github.com/StarXinXin/BetterSynthesis-1.20.4)
+![BetterSynthesis-1.20.4](https://oiapi.net/API/GithubPreview/?clear=0&url=https://github.com/StarXinXin/BetterSynthesis-1.20.4)
 
 <div align="center">
 
