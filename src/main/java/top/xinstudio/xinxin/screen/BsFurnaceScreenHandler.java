@@ -1,43 +1,57 @@
 package top.xinstudio.xinxin.screen;
 
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.screen.PropertyDelegate;
+import net.minecraft.screen.ScreenHandler;
+
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ArrayPropertyDelegate;
-import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
-import top.xinstudio.xinxin.block.entity.CookingPotBlockEntity;
+import top.xinstudio.xinxin.block.entity.BsFurnaceEntity;
 
-public class CookingPotScreenHandler extends ScreenHandler {
+public class BsFurnaceScreenHandler extends ScreenHandler {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
-    public final CookingPotBlockEntity blockEntity;
-    public CookingPotScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf){
-        this(syncId,inventory,inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
+    public final BsFurnaceEntity blockEntity;
+
+    public BsFurnaceScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
+        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
                 new ArrayPropertyDelegate(3));
     }
 
-    public CookingPotScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
-        super(ModScreenHandlers.POLISHING_MACHINE_SCREEN_HANDLER,syncId);
-        checkSize((Inventory) blockEntity,3);
-        this.inventory = (Inventory) blockEntity;
+    public BsFurnaceScreenHandler(int syncId, PlayerInventory playerInventory,
+                               BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
+        super(ModScreenHandlers.FURNACE_SCREEN_HANDLER, syncId);
+        checkSize(((Inventory) blockEntity), 3);
+        this.inventory = ((Inventory) blockEntity);
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
-        this.blockEntity = (CookingPotBlockEntity) blockEntity;
+        this.blockEntity = ((BsFurnaceEntity) blockEntity);
 
         this.addSlot(new Slot(inventory, 0, 39, 12)); // 输入槽
         this.addSlot(new Slot(inventory, 1, 39, 53)); // 燃料槽
-        this.addSlot(new Slot(inventory, 2, 123, 34)); // 输出槽
+        this.addSlot(new Slot(inventory, 2, 123, 32)); // 输出槽
+
+//        this.addSlot(new BsFurnacelot(inventory, 9, 126, 35));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
-
         addProperties(arrayPropertyDelegate);
+    }
 
+    public boolean isCrafting() {
+        return propertyDelegate.get(0) > 0;
+    }
+
+    public int getScaledProgress() {
+        int progress = this.propertyDelegate.get(0);
+        int maxProgress = this.propertyDelegate.get(1);
+        int progressArrowSize = 23;
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 
     @Override
@@ -54,14 +68,12 @@ public class CookingPotScreenHandler extends ScreenHandler {
             } else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) {
                 return ItemStack.EMPTY;
             }
-
             if (originalStack.isEmpty()) {
                 slot.setStack(ItemStack.EMPTY);
             } else {
                 slot.markDirty();
             }
         }
-
         return newStack;
     }
 
@@ -69,6 +81,7 @@ public class CookingPotScreenHandler extends ScreenHandler {
     public boolean canUse(PlayerEntity player) {
         return this.inventory.canPlayerUse(player);
     }
+
     private void addPlayerInventory(PlayerInventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
@@ -81,16 +94,5 @@ public class CookingPotScreenHandler extends ScreenHandler {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
-    }
-    public boolean isCrafting() {
-        return propertyDelegate.get(0) > 0;
-    }
-
-    public int getScaledProgress() {
-        int progress = this.propertyDelegate.get(0);
-        int maxProgress = this.propertyDelegate.get(1);
-        int progressArrowSize = 26;
-
-        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 }

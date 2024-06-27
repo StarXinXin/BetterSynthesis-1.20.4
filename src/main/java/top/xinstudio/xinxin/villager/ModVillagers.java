@@ -16,7 +16,7 @@ import top.xinstudio.xinxin.block.ModBlocks;
 
 public class ModVillagers {
     public static final RegistryKey<PointOfInterestType> Cooking_Stoves_POI_KEY = point("cooking_stoves_poi");
-    public static final PointOfInterestType Cooking_Stoves_POI = registerPointOfInterestType("cooking_stoves_poi", ModBlocks.ITEM_COOKINGSTOVES);
+    public static final PointOfInterestType Cooking_Stoves_POI = registerPointOfInterestType("cooking_stoves_poi", ModBlocks.BLOCK_BSFURNACE);
     public static final VillagerProfession Cooking_Stoves_MASTER = registerVillagerProfession("cooking_stoves_master",Cooking_Stoves_POI_KEY);
     private static VillagerProfession registerVillagerProfession(String name,RegistryKey<PointOfInterestType> type){
         return Registry.register(Registries.VILLAGER_PROFESSION,new Identifier(BetterSynthesis.MOD_ID,name),

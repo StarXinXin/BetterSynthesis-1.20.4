@@ -1,23 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "BWB",
+    "III",
     "ITI",
     "III"
   ],
   "key": {
-    "B": {
-      "item": "minecraft:copper_ingot"
-    },"W": {
-      "item": "minecraft:wooden_shovel"
-    },"I": {
-      "item": "minecraft:iron_ingot"
+    "I": {
+      "item": "minecraft:cobblestone"
     },"T": {
       "item": "minecraft:water_bucket"
     }
   },
   "result": {
-    "item": "better-synthesis:cooking_pot",
+    "item": "better-synthesis:bs_furnace",
     "count": 1
   }
 }

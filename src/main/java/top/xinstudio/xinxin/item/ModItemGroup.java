@@ -16,7 +16,7 @@ public class ModItemGroup {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.BetterSynthesis"))
                     .icon(() -> new ItemStack(ModItems.ITEM_CraftingTable)).entries((displayContext, entries) -> {
                         entries.add(ModItems.ITEM_HardboiledEggs);
-                        entries.add(ModBlocks.ITEM_COOKINGSTOVES);
+                        entries.add(ModBlocks.BLOCK_BSFURNACE);
                     }).build());
 
     public static void registerModItemGroup(){

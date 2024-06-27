@@ -9,11 +9,12 @@ import top.xinstudio.xinxin.BetterSynthesis;
 import top.xinstudio.xinxin.block.ModBlocks;
 
 public class ModBlockEntities {
-    public static final BlockEntityType<CookingPotBlockEntity> COOKING_POT_BLOCK_ENTITY = Registry.register(
-            Registries.BLOCK_ENTITY_TYPE,
-            new Identifier(BetterSynthesis.MOD_ID,"cooking_pot_block_entity"),
-            FabricBlockEntityTypeBuilder.create(CookingPotBlockEntity::new, ModBlocks.ITEM_COOKINGSTOVES).build()
-    );
+
+
+    public static final BlockEntityType<BsFurnaceEntity> BLOCK_BSFURNACE_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(BetterSynthesis.MOD_ID, "bs_furnace"),
+                    FabricBlockEntityTypeBuilder.create(BsFurnaceEntity::new,
+                            ModBlocks.BLOCK_BSFURNACE).build());
 
     public static void registerBlockEntities(){
 

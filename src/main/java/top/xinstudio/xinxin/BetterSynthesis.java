@@ -8,6 +8,7 @@ import top.xinstudio.xinxin.block.ModBlocks;
 import top.xinstudio.xinxin.block.entity.ModBlockEntities;
 import top.xinstudio.xinxin.item.ModItemGroup;
 import top.xinstudio.xinxin.item.ModItems;
+import top.xinstudio.xinxin.recipe.ModRecipes;
 import top.xinstudio.xinxin.screen.ModScreenHandlers;
 import top.xinstudio.xinxin.util.ModTrades;
 
@@ -27,6 +28,7 @@ public class BetterSynthesis implements ModInitializer {
 
 		ModScreenHandlers.registerScreenHandlers();
 
+		ModRecipes.registerRecipes();
 		LOGGER.info("Hello Fabric world!");
 	}
 }

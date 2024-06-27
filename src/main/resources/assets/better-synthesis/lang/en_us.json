@@ -1,9 +1,9 @@
 {
   "item.better-synthesis.item_crafting_table": "Better Synthesis Icon",
   "item.better-synthesis.item_hardboiled_egg": "HardBoiled Eggs",
-  "block.better-synthesis.cooking_pot": "kitchen Pots",
+  "block.better-synthesis.bs_furnace": "Furnace",
   "entity.minecraft.villager.cooking_stoves_master": "Kitchen",
-  "container.CookingStoves": "kitchen Pots",
+  "container.BsFurnace": "Furnace",
   "itemgroup.BetterSynthesis": "BetterSynthesis",
   "advancements.root.title": "TheChefSRoad",
   "advancements.egg.title": "Piping hot and delicious",

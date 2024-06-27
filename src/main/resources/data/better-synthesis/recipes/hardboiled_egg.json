@@ -1,0 +1,12 @@
+{
+  "type": "better-synthesis:bs_furnace",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "better-synthesis:item_hardboiled_egg"
+  }
+}

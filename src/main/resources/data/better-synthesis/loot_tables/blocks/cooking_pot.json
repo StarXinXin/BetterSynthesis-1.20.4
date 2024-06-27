@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "better-synthesis:cooking_pot"
+          "name": "better-synthesis:bs_furnace"
         }
       ],
       "rolls": 1.0

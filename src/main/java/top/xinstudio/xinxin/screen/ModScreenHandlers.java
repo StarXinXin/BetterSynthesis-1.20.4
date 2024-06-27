@@ -8,9 +8,11 @@ import net.minecraft.util.Identifier;
 import top.xinstudio.xinxin.BetterSynthesis;
 
 public class ModScreenHandlers {
-    public static final ScreenHandlerType<CookingPotScreenHandler> POLISHING_MACHINE_SCREEN_HANDLER =
-            Registry.register(Registries.SCREEN_HANDLER,new Identifier(BetterSynthesis.MOD_ID,"cooking_pot"),
-                    new ExtendedScreenHandlerType<>(CookingPotScreenHandler::new));
+
+
+    public static final ScreenHandlerType<BsFurnaceScreenHandler> FURNACE_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(BetterSynthesis.MOD_ID, "bs_furnace"),
+                    new ExtendedScreenHandlerType<>(BsFurnaceScreenHandler::new));
     public static void registerScreenHandlers(){
 
     }

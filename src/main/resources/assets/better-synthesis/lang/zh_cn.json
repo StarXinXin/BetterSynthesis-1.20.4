@@ -1,8 +1,8 @@
 {
   "item.better-synthesis.item_crafting_table": "更好的合成图标",
   "item.better-synthesis.item_hardboiled_egg": "熟鸡蛋",
-  "block.better-synthesis.cooking_pot": "厨锅",
-  "container.CookingStoves": "厨锅",
+  "block.better-synthesis.bs_furnace": "炉灶",
+  "container.BsFurnace": "炉灶",
   "entity.minecraft.villager.cooking_stoves_master": "厨师",
   "itemgroup.BetterSynthesis": "更换的合成",
   "advancements.root.title": "大厨之路",
