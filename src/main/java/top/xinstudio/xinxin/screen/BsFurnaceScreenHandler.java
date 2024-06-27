@@ -26,6 +26,7 @@ public class BsFurnaceScreenHandler extends ScreenHandler {
     public BsFurnaceScreenHandler(int syncId, PlayerInventory playerInventory,
                                BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.FURNACE_SCREEN_HANDLER, syncId);
+
         checkSize(((Inventory) blockEntity), 3);
         this.inventory = ((Inventory) blockEntity);
         inventory.onOpen(playerInventory.player);
@@ -95,4 +96,5 @@ public class BsFurnaceScreenHandler extends ScreenHandler {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
+
 }

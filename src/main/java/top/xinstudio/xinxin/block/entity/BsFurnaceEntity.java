@@ -27,7 +27,7 @@ import top.xinstudio.xinxin.screen.BsFurnaceScreenHandler;
 import java.util.Objects;
 import java.util.Optional;
 
-public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandlerFactory,ImplementedInventory {
+public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
@@ -88,7 +88,7 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new BsFurnaceScreenHandler(syncId,playerInventory,this,this.propertyDelegate);
+        return new BsFurnaceScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
     @Override
@@ -113,29 +113,33 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
             return;
         }
 
-        if (fuelTime > 0) {
-            fuelTime--;
+        if (fuelTime <= 0 && this.hasFuelItem()) {
+            this.consumeFuel();
         }
 
-        if (isOutputSlotAvailable()) {
-            if (this.hsaRecipe() && this.hasFuel()) {
-                this.increaseCraftProgress();
-                markDirty(world, pos, state);
+        if (isInputSlotAvailable()) {
+            if (isOutputSlotAvailable()) {
+                if (this.hsaRecipe() && this.hasFuel()) {
+                    this.increaseCraftProgress();
+                    markDirty(world, pos, state);
 
-                if (hasCraftingFinished()) {
-                    this.craftItem();
+                    if (fuelTime > 0) {
+                        fuelTime--;
+                    }
+
+                    if (hasCraftingFinished()) {
+                        this.craftItem();
+                        this.resetProgress();
+                    }
+                } else {
                     this.resetProgress();
                 }
             } else {
-                this.resetProgress();
+
             }
         } else {
-            this.resetProgress();
             markDirty(world, pos, state);
-        }
-
-        if (fuelTime <= 0 && this.hasFuelItem()) {
-            this.consumeFuel();
+            this.resetProgress();
         }
     }
 
@@ -176,10 +180,10 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
 
     private Optional<RecipeEntry<BsFurnaceRecipe>> getCurrentRecipe() {
         SimpleInventory inv = new SimpleInventory(this.size());
-        for (int i = 0; i< this.size(); i++){
-            inv.setStack(i,this.getStack(i));
+        for (int i = 0; i < this.size(); i++) {
+            inv.setStack(i, this.getStack(i));
         }
-        return Objects.requireNonNull(getWorld()).getRecipeManager().getFirstMatch(BsFurnaceRecipe.Type.INSTANCE,inv,getWorld());
+        return Objects.requireNonNull(getWorld()).getRecipeManager().getFirstMatch(BsFurnaceRecipe.Type.INSTANCE, inv, getWorld());
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
@@ -194,6 +198,10 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
     }
 
+    private boolean isInputSlotAvailable() {
+        return !getStack(INPUT_SLOT).isEmpty();
+    }
+
     private boolean hasFuel() {
         return fuelTime > 0;
     }
@@ -206,7 +214,7 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
         ItemStack fuelStack = getStack(FUEL_SLOT);
         if (!fuelStack.isEmpty()) {
             if (isValidFuel(fuelStack)) {
-                fuelTime = 205; // 假设每个有效的燃料项目燃烧 200 个刻度
+                fuelTime = 203; // 假设每个有效的燃料项目燃烧 200 个刻度
                 fuelStack.decrement(1);
             }
         }
