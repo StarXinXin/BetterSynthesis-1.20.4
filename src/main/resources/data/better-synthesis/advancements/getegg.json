@@ -1,0 +1,40 @@
+{
+  "parent": "better-synthesis:root",
+  "criteria": {
+    "GetEgg": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "better-synthesis:item_hardboiled_egg"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "icon": {
+      "item": "better-synthesis:item_hardboiled_egg"
+    },
+    "title": {
+      "translate": "advancements.egg.title"
+    },
+    "description": {
+      "translate": "advancements.egg.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "show_toast": true
+  },
+  "requirements": [
+    [
+      "GetEgg"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

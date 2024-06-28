@@ -13,6 +13,12 @@ public class ModScreenHandlers {
     public static final ScreenHandlerType<BsFurnaceScreenHandler> FURNACE_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(BetterSynthesis.MOD_ID, "bs_furnace"),
                     new ExtendedScreenHandlerType<>(BsFurnaceScreenHandler::new));
+
+    public static final ScreenHandlerType<BsSaucepanScreenHandler> BsSaucepan_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(BetterSynthesis.MOD_ID, "bs_saucepan"),
+                    new ExtendedScreenHandlerType<>(BsSaucepanScreenHandler::new));
+
+
     public static void registerScreenHandlers(){
 
     }

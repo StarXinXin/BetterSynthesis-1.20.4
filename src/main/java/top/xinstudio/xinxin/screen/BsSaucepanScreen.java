@@ -9,10 +9,10 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import top.xinstudio.xinxin.BetterSynthesis;
 
-public class BsFurnaceScreen extends HandledScreen<BsFurnaceScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier(BetterSynthesis.MOD_ID, "textures/gui/bs_furnace_gui.png");
+public class BsSaucepanScreen extends HandledScreen<BsSaucepanScreenHandler> {
+    private static final Identifier TEXTURE = new Identifier(BetterSynthesis.MOD_ID, "textures/gui/bs_saucepan_gui.png");
 
-    public BsFurnaceScreen(BsFurnaceScreenHandler handler, PlayerInventory inventory, Text title) {
+    public BsSaucepanScreen(BsSaucepanScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 
@@ -20,7 +20,7 @@ public class BsFurnaceScreen extends HandledScreen<BsFurnaceScreenHandler> {
     protected void init() {
         super.init();
         titleY = 10;
-        titleX = 77;
+        titleX = 70;
         playerInventoryTitleY = 72;
     }
 
@@ -37,7 +37,7 @@ public class BsFurnaceScreen extends HandledScreen<BsFurnaceScreenHandler> {
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if(handler.isCrafting()) {
-            context.drawTexture(TEXTURE, x + 74, y + 40, 176, 0, handler.getScaledProgress(), 8);
+            context.drawTexture(TEXTURE, x + 72, y + 38, 176, 0, handler.getScaledProgress(), 8);
         }
     }
 

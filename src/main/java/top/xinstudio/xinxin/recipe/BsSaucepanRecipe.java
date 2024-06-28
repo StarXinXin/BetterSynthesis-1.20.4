@@ -18,11 +18,11 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BsFurnaceRecipe implements Recipe<SimpleInventory> {
+public class BsSaucepanRecipe implements Recipe<SimpleInventory> {
     private final ItemStack output;
     private final List<Ingredient> recipeItems;
 
-    public BsFurnaceRecipe(List<Ingredient> ingredients, ItemStack itemStack) {
+    public BsSaucepanRecipe(List<Ingredient> ingredients, ItemStack itemStack) {
         this.output = itemStack;
         this.recipeItems = ingredients;
     }
@@ -34,7 +34,7 @@ public class BsFurnaceRecipe implements Recipe<SimpleInventory> {
 
     @Override
     public boolean matches(SimpleInventory inventory, World world) {
-        if (world.isClient()) {
+        if (world.isClient()){
             return false;
         }
         return recipeItems.getFirst().test(inventory.getStack(0));
@@ -65,20 +65,20 @@ public class BsFurnaceRecipe implements Recipe<SimpleInventory> {
         return Type.INSTANCE;
     }
 
-    public static class Type implements RecipeType<BsFurnaceRecipe> {
+    public static class Type implements RecipeType<BsSaucepanRecipe> {
         public static final Type INSTANCE = new Type();
-        public static final String ID = "bs_furnace";
+        public static final String ID = "bs_saucepan";
     }
 
 
-    public static class Serializer implements RecipeSerializer<BsFurnaceRecipe> {
+        public static class Serializer implements RecipeSerializer<BsSaucepanRecipe> {
         public static final Serializer INSTANCE = new Serializer();
-        public static final String ID = "bs_furnace";
+        public static final String ID = "bs_saucepan";
 
-        public static final Codec<BsFurnaceRecipe> CODEC = RecordCodecBuilder.create(in -> in.group(
-                validateAmount(Ingredient.DISALLOW_EMPTY_CODEC, 1).fieldOf("ingredients").forGetter(BsFurnaceRecipe::getIngredients),
+        public static final Codec<BsSaucepanRecipe> CODEC = RecordCodecBuilder.create(in -> in.group(
+                validateAmount(Ingredient.DISALLOW_EMPTY_CODEC, 1).fieldOf("ingredients").forGetter(BsSaucepanRecipe::getIngredients),
                 ItemStack.RECIPE_RESULT_CODEC.fieldOf("output").forGetter(r -> r.output)
-        ).apply(in, BsFurnaceRecipe::new));
+        ).apply(in, BsSaucepanRecipe::new));
 
         @SuppressWarnings("SameParameterValue")
         private static Codec<List<Ingredient>> validateAmount(Codec<Ingredient> delegate, int max) {
@@ -88,20 +88,20 @@ public class BsFurnaceRecipe implements Recipe<SimpleInventory> {
         }
 
         @Override
-        public Codec<BsFurnaceRecipe> codec() {
+        public Codec<BsSaucepanRecipe> codec() {
             return CODEC;
         }
 
         @Override
-        public BsFurnaceRecipe read(PacketByteBuf buf) {
+        public BsSaucepanRecipe read(PacketByteBuf buf) {
             DefaultedList<Ingredient> inputs = DefaultedList.ofSize(buf.readInt(), Ingredient.EMPTY);
             inputs.replaceAll(ignored -> Ingredient.fromPacket(buf));
             ItemStack output = buf.readItemStack();
-            return new BsFurnaceRecipe(inputs, output);
+            return new BsSaucepanRecipe(inputs, output);
         }
 
         @Override
-        public void write(PacketByteBuf buf, BsFurnaceRecipe recipe) {
+        public void write(PacketByteBuf buf, BsSaucepanRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
             for (Ingredient ingredient : recipe.getIngredients()) {
                 ingredient.write(buf);

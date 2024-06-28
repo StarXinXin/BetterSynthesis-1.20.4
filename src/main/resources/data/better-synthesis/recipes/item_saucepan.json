@@ -2,18 +2,18 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "III",
-    "ITI",
+    "TIT",
     "III"
   ],
   "key": {
     "I": {
       "item": "minecraft:iron_ingot"
     },"T": {
-      "item": "minecraft:coal"
+      "item": "minecraft:copper_ingot"
     }
   },
   "result": {
-    "item": "better-synthesis:bs_furnace",
+    "item": "better-synthesis:bs_saucepan",
     "count": 1
   }
 }

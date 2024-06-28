@@ -22,38 +22,54 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import top.xinstudio.xinxin.block.entity.BsFurnaceEntity;
+import top.xinstudio.xinxin.block.entity.BsSaucepanEntity;
 import top.xinstudio.xinxin.block.entity.ModBlockEntities;
 
-public class BsFurnace extends BlockWithEntity implements BlockEntityProvider {
+public class BsSaucepan extends BlockWithEntity implements BlockEntityProvider {
+
 
     public static final BooleanProperty LIT = BooleanProperty.of("lit");
-    public static final MapCodec<BsFurnace> CODEC = BsFurnace.createCodec(BsFurnace::new);
+    public static final MapCodec<BsSaucepan> CODEC = BsSaucepan.createCodec(BsSaucepan::new);
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(1.d, .0d, 1.d, 15.d, 4.d, 15.d);
 
-    public BsFurnace(AbstractBlock.Settings settings) {
-        super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL).mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(3.5f).luminance(state -> state.get(LIT) ? 13 : 0));
+    public BsSaucepan(AbstractBlock.Settings settings) {
+        super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.ANVIL).mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(3.5f).luminance(state -> state.get(LIT) ? 13 : 0));
         this.setDefaultState(this.getDefaultState().with(LIT,false));
         setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     }
+
+
     @Override
     @SuppressWarnings("deprecation")
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext ctx) {
-        return VoxelShapes.fullCube();
+        return SHAPE;
     }
+
     @Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {
         return CODEC;
     }
 
+//    @Nullable
+//    @Override
+//    @SuppressWarnings("DataFlowIssue")
+//    public BlockState getPlacementState(ItemPlacementContext ctx) {
+//        return super.getPlacementState(ctx).with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+//    }
+
     @Nullable
     @Override
-    @SuppressWarnings("DataFlowIssue")
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return super.getPlacementState(ctx).with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+        BlockPos blockBelow = ctx.getBlockPos().down();
+        BlockState blockStateBelow = ctx.getWorld().getBlockState(blockBelow);
+
+        if (blockStateBelow.isOf(ModBlocks.BLOCK_BSFURNACE)) {
+            return this.getDefaultState().with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+        }
+        return null;
     }
 
     @Override
@@ -76,7 +92,7 @@ public class BsFurnace extends BlockWithEntity implements BlockEntityProvider {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new BsFurnaceEntity(pos, state);
+        return new BsSaucepanEntity(pos, state);
     }
 
     @Override
@@ -84,8 +100,8 @@ public class BsFurnace extends BlockWithEntity implements BlockEntityProvider {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof BsFurnaceEntity) {
-                ItemScatterer.spawn(world, pos, (BsFurnaceEntity)blockEntity);
+            if (blockEntity instanceof BsSaucepanEntity) {
+                ItemScatterer.spawn(world, pos, (BsSaucepanEntity)blockEntity);
                 world.updateComparators(pos,this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -96,7 +112,7 @@ public class BsFurnace extends BlockWithEntity implements BlockEntityProvider {
     @SuppressWarnings("deprecation")
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-            NamedScreenHandlerFactory screenHandlerFactory = ((BsFurnaceEntity) world.getBlockEntity(pos));
+            NamedScreenHandlerFactory screenHandlerFactory = ((BsSaucepanEntity) world.getBlockEntity(pos));
             if (screenHandlerFactory != null) {
                 player.openHandledScreen(screenHandlerFactory);
             }
@@ -107,7 +123,7 @@ public class BsFurnace extends BlockWithEntity implements BlockEntityProvider {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(type, ModBlockEntities.BLOCK_BSFURNACE_ENTITY,
+        return validateTicker(type, ModBlockEntities.BLOCK_BSSAUCEPAN_ENTITY,
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 
@@ -144,7 +160,4 @@ public class BsFurnace extends BlockWithEntity implements BlockEntityProvider {
 
     }
 
-//    public boolean hasFuel(BlockState state) {
-//        return state.get(LIT);
-//    }
 }

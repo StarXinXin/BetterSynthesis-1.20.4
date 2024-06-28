@@ -1,41 +1,29 @@
 {
+  "criteria": {
+    "seeds": {
+      "conditions": {},
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
   "display": {
+    "announce_to_chat": true,
+    "background": "minecraft:textures/block/bricks.png",
     "icon": {
       "item": "better-synthesis:bs_furnace"
     },
     "title": {
-      "translate": "advancements.root.title"
+      "translate": "advancements.food.root.title"
     },
     "description": {
-      "translate": "advancements.root.description"
+      "translate": "advancements.food.root.description"
     },
-    "background": "minecraft:textures/gui/advancements/backgrounds/husbandry.png",
     "frame": "task",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
-  "criteria": {
-    "crafting_table": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "better-synthesis:bs_furnace"
-            ]
-          }
-        ]
-      }
-    }
+    "hidden": false,
+    "show_toast": true
   },
   "requirements": [
     [
-      "crafting_table"
+      "seeds"
     ]
-  ],
-  "rewards": {
-    "experience": 100
-  },
-  "sends_telemetry_event": false
+  ]
 }

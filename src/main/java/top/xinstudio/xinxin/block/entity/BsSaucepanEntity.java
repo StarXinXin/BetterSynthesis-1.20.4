@@ -9,7 +9,6 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -24,36 +23,32 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import top.xinstudio.xinxin.block.BsFurnace;
-import top.xinstudio.xinxin.recipe.BsFurnaceRecipe;
-import top.xinstudio.xinxin.screen.BsFurnaceScreenHandler;
+import top.xinstudio.xinxin.recipe.BsSaucepanRecipe;
+import top.xinstudio.xinxin.screen.BsSaucepanScreenHandler;
 
 import java.util.Objects;
 import java.util.Optional;
 
-public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
-
+public class BsSaucepanEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 2;
-    public static final int FUEL_SLOT = 1;
-
-    public static boolean hasFuel = false;
-
+    private static final int OUTPUT_SLOT = 1;
+    public static boolean iswork = false;
     protected final PropertyDelegate propertyDelegate;
+//    private static final int FUEL_SLOT = 1;
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
     private int progress = 0;
-    private int maxProgress = 200;
-    private int fuelTime = 0;
+    private int maxProgress = 72;
+//    private int fuelTime = 0;
 
-    public BsFurnaceEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.BLOCK_BSFURNACE_ENTITY, pos, state);
+    public BsSaucepanEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.BLOCK_BSSAUCEPAN_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
                 return switch (index) {
-                    case 0 -> BsFurnaceEntity.this.progress;
-                    case 1 -> BsFurnaceEntity.this.maxProgress;
-                    case 2 -> BsFurnaceEntity.this.fuelTime;
+                    case 0 -> BsSaucepanEntity.this.progress;
+                    case 1 -> BsSaucepanEntity.this.maxProgress;
+//                    case 2 -> BsSaucepanEntity.this.fuelTime;
 //                    case 3 -> CookingPotBlockEntity.this.maxFuelTime;
                     default -> 0;
                 };
@@ -62,19 +57,20 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> BsFurnaceEntity.this.progress = value;
-                    case 1 -> BsFurnaceEntity.this.maxProgress = value;
-                    case 2 -> BsFurnaceEntity.this.fuelTime = value;
+                    case 0 -> BsSaucepanEntity.this.progress = value;
+                    case 1 -> BsSaucepanEntity.this.maxProgress = value;
+//                    case 2 -> BsSaucepanEntity.this.fuelTime = value;
 //                    case 3 -> CookingPotBlockEntity.this.maxFuelTime = value;
                 }
             }
 
             @Override
             public int size() {
-                return 3;
+                return 2;
             }
         };
     }
+
 
     @Override
     public DefaultedList<ItemStack> getItems() {
@@ -88,29 +84,29 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
 
     @Override
     public Text getDisplayName() {
-        return Text.translatable("container.BsFurnace");
+        return Text.translatable("container.BsSaucepan");
     }
 
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new BsFurnaceScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+        return new BsSaucepanScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
-        nbt.putInt("bs_furnace_progress", progress);
-        nbt.putInt("bs_furnace_fuel_time", fuelTime);
+        nbt.putInt("bs_saucepan_progress", progress);
+//        nbt.putInt("bs_saucepan_fuel_time", fuelTime);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         Inventories.readNbt(nbt, inventory);
-        progress = nbt.getInt("bs_furnace_progress");
-        fuelTime = nbt.getInt("bs_furnace_fuel_time");
+        progress = nbt.getInt("bs_saucepan_progress");
+//        fuelTime = nbt.getInt("bs_saucepan_fuel_time");
     }
 
 
@@ -119,28 +115,20 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
             return;
         }
 
-        hasFuel = this.hasFuelItem();
-
-        if (fuelTime <= 0 && this.hasFuelItem()) {
-            this.consumeFuel();
-        }
-
-        if (BsSaucepanEntity.iswork) {
-            world.setBlockState(pos,world.getBlockState(pos).with(BsFurnace.LIT,true));
-        } else {
-            world.setBlockState(pos,world.getBlockState(pos).with(BsFurnace.LIT,false));
-        }
+//        if (fuelTime <= 0 && this.hasFuelItem()) {
+//            this.consumeFuel();
+//        }
 
         if (isInputSlotAvailable()) {
             if (isOutputSlotAvailable()) {
-                if (this.hsaRecipe() && this.hasFuel()) {
-                    world.setBlockState(pos,world.getBlockState(pos).with(BsFurnace.LIT,true));
+                if (this.hsaRecipe() && hasFuel()) {
+
                     this.increaseCraftProgress();
                     markDirty(world, pos, state);
-
-                    if (fuelTime > 0) {
-                        fuelTime--;
-                    }
+                    iswork = true;
+//                    if (fuelTime > 0) {
+//                        fuelTime--;
+//                    }
 
                     if (hasCraftingFinished()) {
                         this.craftItem();
@@ -149,12 +137,13 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
                 } else {
                     this.resetProgress();
                     markDirty(world, pos, state);
-                    world.setBlockState(pos,world.getBlockState(pos).with(BsFurnace.LIT,false));
+                    iswork = false;
                 }
             }
         } else {
             this.resetProgress();
             markDirty(world, pos, state);
+            iswork = false;
         }
     }
 
@@ -170,10 +159,21 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
         this.progress = 0;
     }
 
+    // 检查燃料槽是否有燃料
+    public boolean hasFuel() {
+        if (BsFurnaceEntity.hasFuel) {
+//            BetterSynthesis.LOGGER.info("ucket");
+            return BsFurnaceEntity.hasFuel;
+        } else {
+//            BetterSynthesis.LOGGER.info("kong");
+            return BsFurnaceEntity.hasFuel;
+        }
+    }
+
 
     private void craftItem() {
         this.removeStack(INPUT_SLOT, 1);
-        Optional<RecipeEntry<BsFurnaceRecipe>> recipe = getCurrentRecipe();
+        Optional<RecipeEntry<BsSaucepanRecipe>> recipe = getCurrentRecipe();
 
         if (recipe.isPresent()) {
             ItemStack result = recipe.get().value().getResult(null);
@@ -181,7 +181,7 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
             int newCount = outputStack.getCount() + result.getCount();
             this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), newCount));
         } else {
-            System.err.println("在 BsFurnaceEntity 中找不到当前输入的配方。");
+            System.err.println("在 BsSaucepanEntity 中找不到当前输入的配方。");
         }
     }
 
@@ -195,18 +195,18 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
     }
 
     private boolean hsaRecipe() {
-        Optional<RecipeEntry<BsFurnaceRecipe>> recipe = getCurrentRecipe();
+        Optional<RecipeEntry<BsSaucepanRecipe>> recipe = getCurrentRecipe();
 
         return recipe.isPresent() && canInsertAmountIntoOutputSlot(recipe.get().value().getResult(null)) &&
                 canInsertItemIntoOutputSlot(recipe.get().value().getResult(null).getItem());
     }
 
-    private Optional<RecipeEntry<BsFurnaceRecipe>> getCurrentRecipe() {
+    private Optional<RecipeEntry<BsSaucepanRecipe>> getCurrentRecipe() {
         SimpleInventory inv = new SimpleInventory(this.size());
         for (int i = 0; i < this.size(); i++) {
             inv.setStack(i, this.getStack(i));
         }
-        return Objects.requireNonNull(getWorld()).getRecipeManager().getFirstMatch(BsFurnaceRecipe.Type.INSTANCE, inv, getWorld());
+        return Objects.requireNonNull(getWorld()).getRecipeManager().getFirstMatch(BsSaucepanRecipe.Type.INSTANCE, inv, getWorld());
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
@@ -225,35 +225,6 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
         return !getStack(INPUT_SLOT).isEmpty();
     }
 
-    private boolean hasFuel() {
-        return fuelTime > 0;
-    }
-
-    public boolean hasFuelItem() {
-        return !getStack(FUEL_SLOT).isEmpty();
-    }
-
-    private void consumeFuel() {
-        ItemStack fuelStack = getStack(FUEL_SLOT);
-        if (!fuelStack.isEmpty()) {
-            if (isValidFuel(fuelStack)) {
-                if (fuelStack.getItem() == Items.COAL) {
-                    fuelTime = 1600;
-                } else if (fuelStack.getItem() == Items.CHARCOAL) {
-                    fuelTime = 1600;
-                } else if (fuelStack.getItem() == Items.COAL) {
-                    fuelTime = 1600;
-                }
-                fuelStack.decrement(1);
-            }
-        }
-    }
-
-    private boolean isValidFuel(ItemStack stack) {
-        Item item = stack.getItem();
-        return item == Items.OAK_LOG || item == Items.CHARCOAL || item == Items.COAL;
-    }
-
     @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
@@ -264,6 +235,5 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
     public NbtCompound toInitialChunkDataNbt() {
         return createNbt();
     }
-
 }
 

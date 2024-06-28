@@ -2,11 +2,19 @@
   "item.better-synthesis.item_crafting_table": "Better Synthesis Icon",
   "item.better-synthesis.item_hardboiled_egg": "HardBoiled Eggs",
   "block.better-synthesis.bs_furnace": "Furnace",
+  "block.better-synthesis.bs_saucepan": "Saucepan",
   "entity.minecraft.villager.cooking_stoves_master": "Kitchen",
   "container.BsFurnace": "Furnace",
+  "container.BsSaucepan": "Saucepan",
+  "item.better-synthesis.item_cabbage": "Cabbage",
+  "item.better-synthesis.item_cabbage_seeds": "Cabbage Seeds",
   "itemgroup.BetterSynthesis": "BetterSynthesis",
-  "advancements.root.title": "TheChefSRoad",
+  "advancements.food.root.title": "TheChefRoad",
+  "advancements.food.root.description": "Get the pot and start your cooking journey!",
   "advancements.egg.title": "Piping hot and delicious",
-  "advancements.root.description": "Get the pot and start your cooking journey!",
-  "advancements.egg.description": "Successfully cooked your first egg!"
+  "advancements.egg.description": "Successfully cooked your first egg!",
+  "advancements.seeds.cabbage_seeds.title": "Cabbage farmer",
+  "advancements.seeds.cabbage_seeds.description": "You've planted cabbage seeds for the first time!",
+  "advancements.seeds.get_cabbage_seeds.title": "Cabbage Seeds",
+  "advancements.seeds.get_cabbage_seeds.description": "you've get cabbage seeds for the first time!"
 }

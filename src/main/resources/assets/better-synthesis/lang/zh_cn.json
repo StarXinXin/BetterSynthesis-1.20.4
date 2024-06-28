@@ -2,11 +2,19 @@
   "item.better-synthesis.item_crafting_table": "更好的合成图标",
   "item.better-synthesis.item_hardboiled_egg": "熟鸡蛋",
   "block.better-synthesis.bs_furnace": "炉灶",
+  "block.better-synthesis.bs_saucepan": "平底锅",
   "container.BsFurnace": "炉灶",
+  "container.BsSaucepan": "平底锅",
+  "item.better-synthesis.item_cabbage": "卷心菜",
+  "item.better-synthesis.item_cabbage_seeds": "卷心菜种子",
   "entity.minecraft.villager.cooking_stoves_master": "厨师",
   "itemgroup.BetterSynthesis": "更换的合成",
-  "advancements.root.title": "大厨之路",
+  "advancements.food.root.title": "大厨之路",
   "advancements.egg.title": "滚烫美味",
-  "advancements.root.description": "获得锅，开始烹饪之旅！",
-  "advancements.egg.description": "成功煮熟了你的第一个鸡蛋！"
+  "advancements.food.root.description": "获得锅，开始烹饪之旅！",
+  "advancements.egg.description": "成功煮熟了你的第一个鸡蛋！",
+  "advancements.seeds.cabbage_seeds.title": "卷心菜农民",
+  "advancements.seeds.cabbage_seeds.description": "你第一次种了卷心菜种子！",
+  "advancements.seeds.get_cabbage_seeds.title": "发现新植物",
+  "advancements.seeds.get_cabbage_seeds.description": "路途上找到全新的植物"
 }

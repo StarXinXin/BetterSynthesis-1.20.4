@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {
-      "id": "better-synthesis:cooking_stoves_poi",
-      "required": false
-    }
-  ]
-}

@@ -16,6 +16,13 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(BsFurnaceEntity::new,
                             ModBlocks.BLOCK_BSFURNACE).build());
 
+
+    public static final BlockEntityType<BsSaucepanEntity> BLOCK_BSSAUCEPAN_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(BetterSynthesis.MOD_ID, "bs_saucepan"),
+                    FabricBlockEntityTypeBuilder.create(BsSaucepanEntity::new,
+                            ModBlocks.BLOCK_SAUCEPAN).build());
+
+
     public static void registerBlockEntities(){
 
     }

@@ -11,5 +11,10 @@ public class ModRecipes {
                 BsFurnaceRecipe.Serializer.INSTANCE);
         Registry.register(Registries.RECIPE_TYPE, new Identifier(BetterSynthesis.MOD_ID, BsFurnaceRecipe.Type.ID),
                 BsFurnaceRecipe.Type.INSTANCE);
+
+        Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(BetterSynthesis.MOD_ID, BsSaucepanRecipe.Serializer.ID),
+                BsSaucepanRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, new Identifier(BetterSynthesis.MOD_ID, BsSaucepanRecipe.Type.ID),
+                BsSaucepanRecipe.Type.INSTANCE);
     }
 }

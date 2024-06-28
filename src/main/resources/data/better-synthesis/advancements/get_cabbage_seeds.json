@@ -1,0 +1,37 @@
+{
+  "parent": "better-synthesis:root",
+  "criteria": {
+    "cabbage_seeds": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "better-synthesis:item_cabbage_seeds"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "better-synthesis:item_cabbage_seeds"
+    },
+    "title": {
+      "translate": "advancements.seeds.get_cabbage_seeds.title"
+    },
+    "description": {
+      "translate": "advancements.seeds.get_cabbage_seeds.description"
+    },
+    "show_toast": true
+  },
+  "requirements": [
+    [
+      "cabbage_seeds"
+    ]
+  ]
+}
