@@ -8,7 +8,7 @@
   "item.better-synthesis.item_cabbage": "卷心菜",
   "item.better-synthesis.item_cabbage_seeds": "卷心菜种子",
   "item.better-synthesis.item_cabbage_result": "卷心菜成熟图标",
-  "entity.minecraft.villager.cooking_stoves_master": "厨师",
+  "entity.minecraft.villager.bs_furnace_master": "厨师",
   "itemgroup.BetterSynthesis": "更换的合成",
   "advancements.food.root.title": "大厨之路",
   "advancements.egg.title": "滚烫美味",
