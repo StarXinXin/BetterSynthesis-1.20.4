@@ -36,7 +36,7 @@ public class BsSaucepan extends BlockWithEntity implements BlockEntityProvider {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.d, .0d, 1.d, 15.d, 4.d, 15.d);
 
     public BsSaucepan(AbstractBlock.Settings settings) {
-        super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.ANVIL).mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(3.5f).luminance(state -> state.get(LIT) ? 13 : 0));
+        super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.ANVIL).mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM).strength(1f).luminance(state -> state.get(LIT) ? 13 : 0));
         this.setDefaultState(this.getDefaultState().with(LIT,false));
         setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     }

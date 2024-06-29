@@ -35,7 +35,7 @@ public class BsFurnace extends BlockWithEntity implements BlockEntityProvider {
     public static final MapCodec<BsFurnace> CODEC = BsFurnace.createCodec(BsFurnace::new);
 
     public BsFurnace(AbstractBlock.Settings settings) {
-        super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL).mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM).requiresTool().strength(3.5f).luminance(state -> state.get(LIT) ? 13 : 0));
+        super(AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL).mapColor(MapColor.STONE_GRAY).instrument(Instrument.BASEDRUM).strength(1f).luminance(state -> state.get(LIT) ? 13 : 0));
         this.setDefaultState(this.getDefaultState().with(LIT,false));
         setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     }

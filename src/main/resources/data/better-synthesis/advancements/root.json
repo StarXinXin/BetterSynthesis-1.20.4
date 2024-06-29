@@ -1,7 +1,15 @@
 {
   "criteria": {
     "seeds": {
-      "conditions": {},
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "better-synthesis:bs_furnace"
+            ]
+          }
+        ]
+      },
       "trigger": "minecraft:inventory_changed"
     }
   },

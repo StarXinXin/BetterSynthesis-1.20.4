@@ -15,7 +15,7 @@ import top.xinstudio.xinxin.BetterSynthesis;
 public class ModBlocks {
 
     public static final Block BLOCK_BSFURNACE = registerBlocks("bs_furnace",
-            new BsFurnace((AbstractBlock.Settings.create())));
+            new BsFurnace(AbstractBlock.Settings.create()));
 
     public static final Block BLOCK_SAUCEPAN = registerBlocks("bs_saucepan",
             new BsSaucepan(AbstractBlock.Settings.create()));

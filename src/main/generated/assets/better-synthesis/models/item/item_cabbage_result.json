@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "better-synthesis:item/item_cabbage_result"
-  }
-}
