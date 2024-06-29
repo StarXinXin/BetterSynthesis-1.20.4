@@ -7,6 +7,7 @@
   "container.BsSaucepan": "平底锅",
   "item.better-synthesis.item_cabbage": "卷心菜",
   "item.better-synthesis.item_cabbage_seeds": "卷心菜种子",
+  "item.better-synthesis.item_cabbage_result": "卷心菜成熟图标",
   "entity.minecraft.villager.cooking_stoves_master": "厨师",
   "itemgroup.BetterSynthesis": "更换的合成",
   "advancements.food.root.title": "大厨之路",
@@ -16,5 +17,7 @@
   "advancements.seeds.cabbage_seeds.title": "卷心菜农民",
   "advancements.seeds.cabbage_seeds.description": "你第一次种了卷心菜种子！",
   "advancements.seeds.get_cabbage_seeds.title": "发现新植物",
-  "advancements.seeds.get_cabbage_seeds.description": "路途上找到全新的植物"
+  "advancements.seeds.get_cabbage_seeds.description": "路途上找到全新的植物",
+  "advancements.seeds.get_bs_saucepan.title": "平底锅",
+  "advancements.seeds.get_bs_saucepan.description": "1种全新的烹饪方式"
 }

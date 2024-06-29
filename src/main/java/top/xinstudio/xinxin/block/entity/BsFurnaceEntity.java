@@ -115,6 +115,7 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
 
 
     public void tick(World world, BlockPos pos, BlockState state) {
+
         if (world.isClient()) {
             return;
         }
@@ -125,16 +126,23 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
             this.consumeFuel();
         }
 
+        if (BsSaucepanEntity.zhizhuo == 8) {
+            BsSaucepanEntity.zhizhuo = 0;
+            ItemStack fuelStack = getStack(FUEL_SLOT);
+            fuelStack.decrement(1);
+        }
+
+
         if (BsSaucepanEntity.iswork) {
-            world.setBlockState(pos,world.getBlockState(pos).with(BsFurnace.LIT,true));
+            world.setBlockState(pos, world.getBlockState(pos).with(BsFurnace.LIT, true));
         } else {
-            world.setBlockState(pos,world.getBlockState(pos).with(BsFurnace.LIT,false));
+            world.setBlockState(pos, world.getBlockState(pos).with(BsFurnace.LIT, false));
         }
 
         if (isInputSlotAvailable()) {
             if (isOutputSlotAvailable()) {
                 if (this.hsaRecipe() && this.hasFuel()) {
-                    world.setBlockState(pos,world.getBlockState(pos).with(BsFurnace.LIT,true));
+                    world.setBlockState(pos, world.getBlockState(pos).with(BsFurnace.LIT, true));
                     this.increaseCraftProgress();
                     markDirty(world, pos, state);
 
@@ -149,7 +157,7 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
                 } else {
                     this.resetProgress();
                     markDirty(world, pos, state);
-                    world.setBlockState(pos,world.getBlockState(pos).with(BsFurnace.LIT,false));
+                    world.setBlockState(pos, world.getBlockState(pos).with(BsFurnace.LIT, false));
                 }
             }
         } else {
@@ -173,6 +181,7 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
 
     private void craftItem() {
         this.removeStack(INPUT_SLOT, 1);
+
         Optional<RecipeEntry<BsFurnaceRecipe>> recipe = getCurrentRecipe();
 
         if (recipe.isPresent()) {
@@ -248,6 +257,7 @@ public class BsFurnaceEntity extends BlockEntity implements ExtendedScreenHandle
             }
         }
     }
+
 
     private boolean isValidFuel(ItemStack stack) {
         Item item = stack.getItem();

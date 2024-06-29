@@ -8,6 +8,7 @@
   "container.BsSaucepan": "Saucepan",
   "item.better-synthesis.item_cabbage": "Cabbage",
   "item.better-synthesis.item_cabbage_seeds": "Cabbage Seeds",
+  "item.better-synthesis.item_cabbage_result": "Cabbage Mature Icon",
   "itemgroup.BetterSynthesis": "BetterSynthesis",
   "advancements.food.root.title": "TheChefRoad",
   "advancements.food.root.description": "Get the pot and start your cooking journey!",
@@ -16,5 +17,7 @@
   "advancements.seeds.cabbage_seeds.title": "Cabbage farmer",
   "advancements.seeds.cabbage_seeds.description": "You've planted cabbage seeds for the first time!",
   "advancements.seeds.get_cabbage_seeds.title": "Cabbage Seeds",
-  "advancements.seeds.get_cabbage_seeds.description": "you've get cabbage seeds for the first time!"
+  "advancements.seeds.get_cabbage_seeds.description": "you've get cabbage seeds for the first time!",
+  "advancements.seeds.get_bs_saucepan.title": "Saucepan",
+  "advancements.seeds.get_bs_saucepan.description": "1 brand new way to cook"
 }

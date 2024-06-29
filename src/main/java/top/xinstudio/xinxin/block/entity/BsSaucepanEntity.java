@@ -33,7 +33,11 @@ public class BsSaucepanEntity extends BlockEntity implements ExtendedScreenHandl
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
     public static boolean iswork = false;
+
     protected final PropertyDelegate propertyDelegate;
+
+    public static int zhizhuo = 0;
+
 //    private static final int FUEL_SLOT = 1;
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
     private int progress = 0;
@@ -173,16 +177,26 @@ public class BsSaucepanEntity extends BlockEntity implements ExtendedScreenHandl
 
     private void craftItem() {
         this.removeStack(INPUT_SLOT, 1);
+        
         Optional<RecipeEntry<BsSaucepanRecipe>> recipe = getCurrentRecipe();
 
         if (recipe.isPresent()) {
+
+
             ItemStack result = recipe.get().value().getResult(null);
             ItemStack outputStack = this.getStack(OUTPUT_SLOT);
             int newCount = outputStack.getCount() + result.getCount();
             this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), newCount));
+
+            zhizhuo++;
+            System.err.println(zhizhuo);
+
+
         } else {
             System.err.println("在 BsSaucepanEntity 中找不到当前输入的配方。");
         }
+
+
     }
 
 

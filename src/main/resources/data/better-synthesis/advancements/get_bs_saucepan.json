@@ -1,0 +1,37 @@
+{
+  "parent": "better-synthesis:root",
+  "criteria": {
+    "get_bs_saucepan": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "better-synthesis:bs_saucepan"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "better-synthesis:bs_saucepan"
+    },
+    "title": {
+      "translate": "advancements.seeds.get_bs_saucepan.title"
+    },
+    "description": {
+      "translate": "advancements.seeds.get_bs_saucepan.description"
+    },
+    "show_toast": true
+  },
+  "requirements": [
+    [
+      "get_bs_saucepan"
+    ]
+  ]
+}
