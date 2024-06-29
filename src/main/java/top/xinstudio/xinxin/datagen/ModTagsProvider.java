@@ -11,14 +11,14 @@ import top.xinstudio.xinxin.BetterSynthesis;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModPoiTagsProvider extends TagProvider<PointOfInterestType> {
-    public ModPoiTagsProvider(DataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookupFuture) {
+public class ModTagsProvider extends TagProvider<PointOfInterestType> {
+    public ModTagsProvider(DataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookupFuture) {
         super(output, RegistryKeys.POINT_OF_INTEREST_TYPE, registryLookupFuture);
     }
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup lookup) {
         getOrCreateTagBuilder(PointOfInterestTypeTags.ACQUIRABLE_JOB_SITE)
-                .addOptional(new Identifier(BetterSynthesis.MOD_ID,"cooking_stoves_poi"));
+                .addOptional(new Identifier(BetterSynthesis.MOD_ID,"bs_furnace"));
     }
 }

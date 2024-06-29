@@ -3,7 +3,7 @@
   "item.better-synthesis.item_hardboiled_egg": "HardBoiled Eggs",
   "block.better-synthesis.bs_furnace": "Furnace",
   "block.better-synthesis.bs_saucepan": "Saucepan",
-  "entity.minecraft.villager.cooking_stoves_master": "Kitchen",
+  "entity.minecraft.villager.bs_furnace_master": "Kitchen",
   "container.BsFurnace": "Furnace",
   "container.BsSaucepan": "Saucepan",
   "item.better-synthesis.item_cabbage": "Cabbage",

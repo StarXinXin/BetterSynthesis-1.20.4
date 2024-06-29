@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "better-synthesis:bs_furnace",
+      "required": false
+    }
+  ]
+}

@@ -23,12 +23,10 @@ public class ModTrades {
             );
         });
 
-        TradeOfferHelper.registerVillagerOffers(ModVillagers.Cooking_Stoves_MASTER, 1, factories -> {
-            factories.add((entity, random) -> new TradeOffer(
-                    new ItemStack(Items.ROTTEN_FLESH, 10),
-                    new ItemStack(ModItems.ITEM_HardboiledEggs, 1),
-                    6, 5, 0.05f)
-            );
-        });
+        TradeOfferHelper.registerVillagerOffers(ModVillagers.BLOCK_BSFURNACE_MASTER, 1, factories -> factories.add((entity, random) -> new TradeOffer(
+                new ItemStack(Items.ROTTEN_FLESH, 10),
+                new ItemStack(ModItems.ITEM_HardboiledEggs, 1),
+                6, 5, 0.05f)
+        ));
     }
 }

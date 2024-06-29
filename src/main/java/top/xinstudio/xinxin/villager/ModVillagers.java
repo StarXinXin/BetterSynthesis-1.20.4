@@ -15,21 +15,28 @@ import top.xinstudio.xinxin.BetterSynthesis;
 import top.xinstudio.xinxin.block.ModBlocks;
 
 public class ModVillagers {
-    public static final RegistryKey<PointOfInterestType> Cooking_Stoves_POI_KEY = point("cooking_stoves_poi");
-    public static final PointOfInterestType Cooking_Stoves_POI = registerPointOfInterestType("cooking_stoves_poi", ModBlocks.BLOCK_BSFURNACE);
-    public static final VillagerProfession Cooking_Stoves_MASTER = registerVillagerProfession("cooking_stoves_master",Cooking_Stoves_POI_KEY);
-    private static VillagerProfession registerVillagerProfession(String name,RegistryKey<PointOfInterestType> type){
-        return Registry.register(Registries.VILLAGER_PROFESSION,new Identifier(BetterSynthesis.MOD_ID,name),
-                new VillagerProfession(name,entry -> entry.matchesKey(type),entry -> entry.matchesKey(type),
-                        ImmutableSet.of(),ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_LIBRARIAN));
+
+    public static final RegistryKey<PointOfInterestType> BLOCK_BSFURNACE_KEY = point("bs_furnace");
+    public static final PointOfInterestType BLOCK_BSFURNACE = registerPointOfInterestType("bs_furnace", ModBlocks.BLOCK_BSFURNACE);
+    public static final VillagerProfession BLOCK_BSFURNACE_MASTER = registerVillagerProfession("bs_furnace_master", BLOCK_BSFURNACE_KEY);
+
+    private static VillagerProfession registerVillagerProfession(String name, RegistryKey<PointOfInterestType> type) {
+        return Registry.register(Registries.VILLAGER_PROFESSION, new Identifier(BetterSynthesis.MOD_ID, name),
+                new VillagerProfession(name, entry -> entry.matchesKey(type), entry -> entry.matchesKey(type),
+                        ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_LIBRARIAN));
     }
-    private static PointOfInterestType registerPointOfInterestType(String name, Block block){
-        return PointOfInterestHelper.register(new Identifier(BetterSynthesis.MOD_ID,name),1,1,block);
+
+    private static PointOfInterestType registerPointOfInterestType(String name, Block block) {
+        return PointOfInterestHelper.register(new Identifier(BetterSynthesis.MOD_ID, name), 1, 1, block);
     }
-    private static RegistryKey<PointOfInterestType> point(String name){
-        return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE,new Identifier(BetterSynthesis.MOD_ID,name));
+
+    private static RegistryKey<PointOfInterestType> point(String name) {
+        return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, new Identifier(BetterSynthesis.MOD_ID, name));
     }
-    public static void registerVillagers(){
+
+    public static void registerVillagers() {
 
     }
+
+
 }
