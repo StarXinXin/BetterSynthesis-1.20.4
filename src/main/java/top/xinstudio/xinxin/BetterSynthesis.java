@@ -29,6 +29,6 @@ public class BetterSynthesis implements ModInitializer {
 		ModScreenHandlers.registerScreenHandlers();
 
 		ModRecipes.registerRecipes();
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("Hello Fabric World! 摘星辰 - 更好的合成");
 	}
 }
