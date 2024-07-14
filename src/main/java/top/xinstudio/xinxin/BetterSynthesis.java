@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.xinstudio.xinxin.block.ModBlocks;
 import top.xinstudio.xinxin.block.entity.ModBlockEntities;
+import top.xinstudio.xinxin.enchantments.ModEnchantments;
 import top.xinstudio.xinxin.item.ModItemGroup;
 import top.xinstudio.xinxin.item.ModItems;
 import top.xinstudio.xinxin.recipe.ModRecipes;
@@ -29,6 +30,8 @@ public class BetterSynthesis implements ModInitializer {
 		ModScreenHandlers.registerScreenHandlers();
 
 		ModRecipes.registerRecipes();
+
+		ModEnchantments.registerEnchantments();
 		LOGGER.info("Hello Fabric World! 摘星辰 - 更好的合成");
 	}
 }

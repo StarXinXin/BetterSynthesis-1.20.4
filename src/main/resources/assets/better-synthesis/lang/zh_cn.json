@@ -19,5 +19,6 @@
   "advancements.seeds.get_cabbage_seeds.title": "发现新植物",
   "advancements.seeds.get_cabbage_seeds.description": "路途上找到全新的植物",
   "advancements.seeds.get_bs_saucepan.title": "平底锅",
-  "advancements.seeds.get_bs_saucepan.description": "1种全新的烹饪方式"
+  "advancements.seeds.get_bs_saucepan.description": "1种全新的烹饪方式",
+  "enchantment.better-synthesis.no_magma_damage": "岩浆块行者"
 }

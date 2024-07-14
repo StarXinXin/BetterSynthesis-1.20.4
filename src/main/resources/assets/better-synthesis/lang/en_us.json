@@ -19,5 +19,7 @@
   "advancements.seeds.get_cabbage_seeds.title": "Cabbage Seeds",
   "advancements.seeds.get_cabbage_seeds.description": "you've get cabbage seeds for the first time!",
   "advancements.seeds.get_bs_saucepan.title": "Saucepan",
-  "advancements.seeds.get_bs_saucepan.description": "1 brand new way to cook"
+  "advancements.seeds.get_bs_saucepan.description": "1 brand new way to cook",
+  "enchantment.better-synthesis.no_magma_damage": "Magma Block Walker"
+
 }
