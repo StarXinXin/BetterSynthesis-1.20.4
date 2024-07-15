@@ -31,16 +31,19 @@ public class ModTrades {
         //为“图书管理员”职业的村民注册自定义交易
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.LIBRARIAN, 1, factories -> {
             factories.add((entity, random) -> {
-                ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
-                EnchantedBookItem.addEnchantment(enchantedBook, new EnchantmentLevelEntry(ModEnchantments.NO_MAGMA_DAMAGE, 1));
-                return new TradeOffer(
-                        new ItemStack(Items.EMERALD, 10), // 十个绿宝石
-                        new ItemStack(Items.BOOK, 1), // 一本书
-                        enchantedBook, // 岩浆块行者附魔书
-                        12, // 最大使用量
-                        5, // 给村民的经验
-                        0.05F // 价格乘数
-                );
+                if (random.nextFloat() < 0.2F) { // 20% chance to offer the custom trade
+                    ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
+                    EnchantedBookItem.addEnchantment(enchantedBook, new EnchantmentLevelEntry(ModEnchantments.NO_MAGMA_DAMAGE, 1));
+                    return new TradeOffer(
+                            new ItemStack(Items.EMERALD, 10), // 10颗绿宝石
+                            new ItemStack(Items.BOOK, 1), // 一本书
+                            enchantedBook, // 附魔书
+                            12, // 最大使用量
+                            5, // 获得经验
+                            0.05F // 价格折扣
+                    );
+                }
+                return null;
             });
         });
 

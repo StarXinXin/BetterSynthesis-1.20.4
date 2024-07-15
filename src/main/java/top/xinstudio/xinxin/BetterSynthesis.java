@@ -1,7 +1,12 @@
 package top.xinstudio.xinxin;
 
+import com.google.gson.JsonObject;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.recipe.RecipeManager;
+import net.minecraft.recipe.SmeltingRecipe;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.xinstudio.xinxin.block.ModBlocks;
@@ -11,27 +16,32 @@ import top.xinstudio.xinxin.item.ModItemGroup;
 import top.xinstudio.xinxin.item.ModItems;
 import top.xinstudio.xinxin.recipe.ModRecipes;
 import top.xinstudio.xinxin.screen.ModScreenHandlers;
+import top.xinstudio.xinxin.util.ModLootTableModifiers;
 import top.xinstudio.xinxin.util.ModTrades;
 
 public class BetterSynthesis implements ModInitializer {
-	public static final String MOD_ID = "better-synthesis";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final String MOD_ID = "better-synthesis";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 
-	@Override
-	public void onInitialize() {
-		ModItemGroup.registerModItemGroup();
-		ModItems.registerModItems();
-		ModTrades.registerTrades();
-		ModBlocks.registerModBlocks();
+    @Override
+    public void onInitialize() {
+        ModItemGroup.registerModItemGroup();
+        ModItems.registerModItems();
+        ModTrades.registerTrades();
+        ModBlocks.registerModBlocks();
 
-		ModBlockEntities.registerBlockEntities();
+        ModBlockEntities.registerBlockEntities();
 
-		ModScreenHandlers.registerScreenHandlers();
+        ModScreenHandlers.registerScreenHandlers();
 
-		ModRecipes.registerRecipes();
+        ModRecipes.registerRecipes();
 
-		ModEnchantments.registerEnchantments();
-		LOGGER.info("Hello Fabric World! 摘星辰 - 更好的合成");
-	}
+        ModEnchantments.registerEnchantments();
+
+        ModLootTableModifiers.modifierLootTables();
+        LOGGER.info("Hello Fabric World! 摘星辰 - 更好的合成");
+
+    }
+
 }
